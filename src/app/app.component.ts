@@ -14,18 +14,16 @@ import { HttpClientModule, HttpResponse } from '@angular/common/http';
     imports: [CommonModule, RouterOutlet, SearchBarComponent, PageListComponent, HttpClientModule]
 })
 export class AppComponent {
-  pages = [];
+  pages: Array<{}> = [];
 
   /**
    *
    */
   constructor(private wikipedia: WikipediaService) {
-    
-    
   }
   onTerm(term: string) {
-   this.wikipedia.search(term).subscribe((res: any) => {
-    this.pages = res.query.search;
+   this.wikipedia.search(term).subscribe((pages) => {
+    this.pages = pages;
    })
   }
   
